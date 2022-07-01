@@ -1,0 +1,60 @@
+[
+    {
+        "input": ["Python", "is", "a", "programming", "language"],
+        "span_info": 1,
+        "dictionary": {
+            "programming language" : ["programming", "language"],
+            "language" : ["language"],
+            "programming": ["programming"]
+        },
+        "explanation": "Longest from overlapping ngrams as well as last word with spans",
+        "output": [["programming language", 3, 5]]
+    },
+
+    {
+        "input": ["Python", "is", "a", "programming", "language"],
+        "span_info": 0,
+        "dictionary": {
+            "programming language" : ["programming", "language"],
+            "language" : ["language"],
+            "programming": ["programming"]
+        },
+        "explanation": "Longest from overlapping ngrams as well as last word",
+        "output": ["programming language"]
+    },
+
+    {
+        "input": ["programming", "is", "performed", "using", "a", "programming", "language"],
+        "span_info": 0,
+        "dictionary": {
+            "programming language" : ["programming", "language"],
+            "language" : ["language"],
+            "programming": ["programming"]
+        },
+        "explanation": "There exists a longer ngram, but the shorter version was selected because the next word in the list isn't part of the next longer ngram.",
+        "output": ["programming", "programming language"]
+    },
+
+    {
+        "input": [],
+        "span_info": 0,
+        "dictionary": {
+            "programming language" : ["programming", "language"],
+            "language" : ["language"],
+            "programming": ["programming"]
+        },
+        "explanation": "No words in dictionary present in input",
+        "output": []
+    },
+
+    {
+        "input": ["programming", "is", "performed", "using", "a", "programming", "language"],
+        "span_info": 0,
+        "dictionary": {
+            "programming language" : ["programming", "language"],
+            "language" : ["language"]
+        },
+        "explanation": "We have extracted part of an ngram, but it was stopped by the next token which isn't part of the ngram. Start extracting from the token following the start of the failed token.",
+        "output": ["programming language"]
+    }
+]

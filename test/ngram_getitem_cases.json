@@ -1,0 +1,35 @@
+[
+    {
+        "dictionary": {
+            "programming language" : ["programming", "language"],
+            "language" : ["language"],
+            "programming": ["programming"]
+        },
+        "explanation": "Typical case, everything is present",
+        "output": [
+            [["programming", "language"], "programming language"],
+            [["language"], "language"],
+            [["programming"], "programming"]
+        ]
+    },
+
+    {
+        "dictionary": {
+            "programming": ["programming"]
+        },
+        "explanation": "Not in dict",
+        "output": [
+            [["python"], null]
+        ]
+    },
+
+    {
+        "dictionary": {
+            "programming language": ["programming", "language"]
+        },
+        "explanation": "Part of ngram is in dict, but not the whole thing",
+        "output": [
+            [["programming"], null]
+        ]
+    }
+]

@@ -1,0 +1,52 @@
+[
+    {
+        "dictionary": {
+            "programming language" : ["programming", "language"],
+            "language" : ["language"],
+            "programming": ["programming"]
+        },
+        "delete": [
+            ["True", ["programming"]], 
+            ["True", ["language"]]
+        ],
+        "explanation": "Delete small ngrams that are both part of a longer ngram",
+        "output": [["programming", "language"]]
+    },
+
+    {
+        "dictionary": {
+            "programming language" : ["programming", "language"],
+            "language" : ["language"],
+            "programming": ["programming"]
+        },
+        "delete": [
+            ["True", ["programming", "language"]],
+            ["False", ["programming", "language"]]
+        ],
+        "explanation": "Delete large ngram that is als part of a smaller ngram",
+        "output": [["programming"], ["language"]]
+    },
+
+    {
+        "dictionary": {
+            "language" : ["language"],
+            "programming": ["programming"]
+        },
+        "delete": [
+            ["False", ["c++"]]
+        ],
+        "explanation": "Try to delete something that doesn't even exists in the trie.",
+        "output": [["programming"], ["language"]]
+    },
+
+    {
+        "dictionary": {
+            "abc" : ["a","b","c"]
+        },
+        "delete": [
+            ["False", ["a","b"]]
+        ],
+        "explanation": "We went into the trie and reached the end of the ngram to delete, but it's not the end of a full ngram",
+        "output": [["a","b","c"]]
+    }
+]
