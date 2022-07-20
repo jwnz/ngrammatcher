@@ -317,6 +317,8 @@ class NGramMatcher():
                 if self.end_boundary_tag in head:
                     ngram = (head[self.end_boundary_tag], start_pos, end_pos)
                     not_end = None
+                elif not_end:
+                    pass
                 else:
                     not_end = i
                 i += 1
