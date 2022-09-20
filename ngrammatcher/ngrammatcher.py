@@ -298,6 +298,7 @@ class NGramMatcher():
 
         start_pos = None
         end_pos = None
+        not_end = None
         ngram = None
         head = self.trie
 
@@ -315,6 +316,11 @@ class NGramMatcher():
 
                 if self.end_boundary_tag in head:
                     ngram = (head[self.end_boundary_tag], start_pos, end_pos)
+                    not_end = None
+                elif not_end:
+                    pass
+                else:
+                    not_end = i
                 i += 1
 
             # 2. word is not in subtrie
@@ -324,9 +330,13 @@ class NGramMatcher():
                 if ngram is not None:
                     ngrams.append(ngram)
                     ngram = None
-                    i = end_pos
+                    if not_end:
+                        i = not_end
+                    else:
+                        i = end_pos
                     start_pos = None
                     end_pos = None
+                    not_end = None
 
                 # no ngram found
                 else:
